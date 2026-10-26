@@ -1,0 +1,3 @@
+$ gh repo create hammuneer/dice-assignment1-part3-docker-volumes --public --description "DICE Assignment 1 Part 3: Docker volumes" --source . --remote origin
+https://github.com/hammuneer/dice-assignment1-part3-docker-volumes
+[exit code: 0]

@@ -786,15 +786,59 @@ git commit -m "Assignment 1 Part 3: Docker volumes"
 gh repo create hammuneer/dice-assignment1-part3-docker-volumes --public \
   --description "DICE Assignment 1 Part 3: Docker volumes" --source . --remote origin
 git push -u origin main
-gh repo view hammuneer/dice-assignment1-part3-docker-volumes
+gh repo view hammuneer/dice-assignment1-part3-docker-volumes --json name,visibility,url,defaultBranchRef,description
 ```
 
-**Output:** see [`logs/16-git-commit.log`](logs/16-git-commit.log),
+The `origin` URL was then switched to the `github.com-personal` SSH host alias used on this
+machine for the personal GitHub account:
+
+```bash
+git remote set-url origin git@github.com-personal:hammuneer/dice-assignment1-part3-docker-volumes.git
+```
+
+**Output** (commit file list shortened, full output in
+[`logs/16-git-commit.log`](logs/16-git-commit.log),
 [`logs/17-gh-repo-create.log`](logs/17-gh-repo-create.log),
 [`logs/18-git-push.log`](logs/18-git-push.log) and
-[`logs/19-gh-repo-view.log`](logs/19-gh-repo-view.log).
+[`logs/19-gh-repo-view.log`](logs/19-gh-repo-view.log)):
 
-<!-- PUSH-OUTPUT -->
+```text
+$ git commit -m 'Assignment 1 Part 3: Docker volumes'
+[main (root-commit) c126fb0] Assignment 1 Part 3: Docker volumes
+ 20 files changed, 1284 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 README.md
+ create mode 100644 host-files/about.html
+ create mode 100644 host-files/index.html
+ create mode 100644 logs/00-pull-images.log
+ ...
+ create mode 100644 logs/15-volume-rm.log
+
+$ gh repo create hammuneer/dice-assignment1-part3-docker-volumes --public --description "DICE Assignment 1 Part 3: Docker volumes" --source . --remote origin
+https://github.com/hammuneer/dice-assignment1-part3-docker-volumes
+
+$ git push -u origin main
+To github.com-personal:hammuneer/dice-assignment1-part3-docker-volumes.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+$ gh repo view hammuneer/dice-assignment1-part3-docker-volumes --json name,visibility,url,defaultBranchRef,description
+{"defaultBranchRef":{"name":"main"},"description":"DICE Assignment 1 Part 3: Docker volumes","name":"dice-assignment1-part3-docker-volumes","url":"https://github.com/hammuneer/dice-assignment1-part3-docker-volumes","visibility":"PUBLIC"}
+
+$ git ls-remote origin
+db29560874f075977a427bba67fa8ca533d219b3	HEAD
+db29560874f075977a427bba67fa8ca533d219b3	refs/heads/main
+
+$ gh api repos/hammuneer/dice-assignment1-part3-docker-volumes/contents --jq ".[].name"
+.gitignore
+README.md
+host-files
+logs
+```
+
+The repository is public, its default branch is `main`, and the commit on GitHub (`db29560`)
+matches the local commit. (The commit was amended to add a co-author line after
+`16-git-commit.log` was recorded, so its hash changed from `c126fb0` to `db29560`.)
 
 ---
 

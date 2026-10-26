@@ -1,0 +1,15 @@
+$ gh repo view hammuneer/dice-assignment1-part3-docker-volumes --json name,visibility,url,defaultBranchRef,description
+{"defaultBranchRef":{"name":"main"},"description":"DICE Assignment 1 Part 3: Docker volumes","name":"dice-assignment1-part3-docker-volumes","url":"https://github.com/hammuneer/dice-assignment1-part3-docker-volumes","visibility":"PUBLIC"}
+[exit code: 0]
+
+$ git ls-remote origin
+db29560874f075977a427bba67fa8ca533d219b3	HEAD
+db29560874f075977a427bba67fa8ca533d219b3	refs/heads/main
+[exit code: 0]
+
+$ gh api repos/hammuneer/dice-assignment1-part3-docker-volumes/contents --jq ".[].name"
+.gitignore
+README.md
+host-files
+logs
+[exit code: 0]
