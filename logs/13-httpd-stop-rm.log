@@ -1,0 +1,12 @@
+$ docker stop httpd-volume
+httpd-volume
+[exit code: 0]
+
+$ docker rm httpd-volume
+httpd-volume
+[exit code: 0]
+
+$ docker ps -a --filter name=httpd-volume
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+[exit code: 0]
+

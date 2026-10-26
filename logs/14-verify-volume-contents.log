@@ -1,0 +1,61 @@
+$ docker volume ls --filter name=my_volume
+DRIVER    VOLUME NAME
+local     my_volume
+[exit code: 0]
+
+$ docker volume inspect my_volume
+[
+    {
+        "CreatedAt": "2026-10-26T22:25:12Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/my_volume/_data",
+        "Name": "my_volume",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+[exit code: 0]
+
+$ docker run --rm -v my_volume:/data alpine:latest ls -l /data
+Unable to find image 'alpine:latest' locally
+latest: Pulling from library/alpine
+3da1513d2124: Download complete
+3ec36f3670df: Download complete
+Digest: sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a
+Status: Downloaded newer image for alpine:latest
+total 12
+-rw-r--r--    1 root     root           497 Oct 21 14:24 50x.html
+-rw-r--r--    1 501      dialout        387 Oct 26 22:24 about.html
+-rw-r--r--    1 501      dialout        373 Oct 26 22:24 index.html
+[exit code: 0]
+
+$ docker run --rm -v my_volume:/data alpine:latest sh -c 'for f in /data/index.html /data/about.html; do echo "===== $f ====="; cat $f; done'
+===== /data/index.html =====
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>my_volume – index.html</title>
+  </head>
+  <body>
+    <h1>Hello from my_volume!</h1>
+    <p>This index.html was created on the host and copied into the Docker volume "my_volume" with docker cp.</p>
+    <p>It is served by the nginx container on http://localhost:8080.</p>
+  </body>
+</html>
+===== /data/about.html =====
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>my_volume – about.html</title>
+  </head>
+  <body>
+    <h1>About this page</h1>
+    <p>This about.html was created on the host and copied into the Docker volume "my_volume" with docker cp.</p>
+    <p>It is served by the httpd (Apache) container on http://localhost:8081/about.html.</p>
+  </body>
+</html>
+[exit code: 0]
+

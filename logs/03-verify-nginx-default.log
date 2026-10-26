@@ -1,0 +1,20 @@
+$ curl -s -i http://localhost:8080 | head -12
+HTTP/1.1 200 OK
+Server: nginx/1.31.8
+Date: Mon, 26 Oct 2026 22:25:20 GMT
+Content-Type: text/html
+Content-Length: 896
+Last-Modified: Wed, 21 Oct 2026 14:24:51 GMT
+Connection: keep-alive
+ETag: "6ad8cb33-380"
+Accept-Ranges: bytes
+
+<!DOCTYPE html>
+<html>
+[exit code: 0]
+
+$ curl -s http://localhost:8080 | grep -E '<title>|<h1>'
+<title>Welcome to nginx!</title>
+<h1>Welcome to nginx!</h1>
+[exit code: 0]
+

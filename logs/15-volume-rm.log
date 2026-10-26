@@ -1,0 +1,13 @@
+$ docker volume rm my_volume
+my_volume
+[exit code: 0]
+
+$ docker volume ls --filter name=my_volume
+DRIVER    VOLUME NAME
+[exit code: 0]
+
+$ docker volume inspect my_volume
+[]
+Error response from daemon: get my_volume: no such volume
+[exit code: 1]
+

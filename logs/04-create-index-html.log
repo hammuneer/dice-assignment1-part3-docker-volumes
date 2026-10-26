@@ -1,0 +1,19 @@
+$ ls -l host-files/index.html
+-rw-r--r--@ 1 apple  staff  373 Oct 27 03:24 host-files/index.html
+[exit code: 0]
+
+$ cat host-files/index.html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>my_volume – index.html</title>
+  </head>
+  <body>
+    <h1>Hello from my_volume!</h1>
+    <p>This index.html was created on the host and copied into the Docker volume "my_volume" with docker cp.</p>
+    <p>It is served by the nginx container on http://localhost:8080.</p>
+  </body>
+</html>
+[exit code: 0]
+

@@ -1,0 +1,17 @@
+$ docker stop nginx-volume
+nginx-volume
+[exit code: 0]
+
+$ docker rm nginx-volume
+nginx-volume
+[exit code: 0]
+
+$ docker ps -a --filter name=nginx-volume
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+[exit code: 0]
+
+$ docker volume ls --filter name=my_volume
+DRIVER    VOLUME NAME
+local     my_volume
+[exit code: 0]
+

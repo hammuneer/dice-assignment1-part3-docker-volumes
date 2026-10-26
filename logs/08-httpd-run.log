@@ -1,0 +1,30 @@
+$ docker run -d --name httpd-volume -p 8081:80 -v my_volume:/usr/local/apache2/htdocs httpd:latest
+1455d844d8d9e82764e319ba3ec363c76a9183a238917654b2c23f9d9c1c43e4
+[exit code: 0]
+
+$ docker ps --filter name=httpd-volume
+CONTAINER ID   IMAGE          COMMAND              CREATED         STATUS         PORTS                                     NAMES
+1455d844d8d9   httpd:latest   "httpd-foreground"   2 seconds ago   Up 2 seconds   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   httpd-volume
+[exit code: 0]
+
+$ docker inspect --format '{{json .Mounts}}' httpd-volume | python3 -m json.tool
+[
+    {
+        "Type": "volume",
+        "Name": "my_volume",
+        "Source": "/var/lib/docker/volumes/my_volume/_data",
+        "Destination": "/usr/local/apache2/htdocs",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": true,
+        "Propagation": ""
+    }
+]
+[exit code: 0]
+
+$ docker exec httpd-volume ls -l /usr/local/apache2/htdocs
+total 8
+-rw-r--r-- 1 root root    497 Oct 21 14:24 50x.html
+-rw-r--r-- 1  501 dialout 373 Oct 26 22:24 index.html
+[exit code: 0]
+

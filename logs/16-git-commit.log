@@ -1,0 +1,25 @@
+$ git commit -m 'Assignment 1 Part 3: Docker volumes'
+[main (root-commit) c126fb0] Assignment 1 Part 3: Docker volumes
+ 20 files changed, 1284 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 README.md
+ create mode 100644 host-files/about.html
+ create mode 100644 host-files/index.html
+ create mode 100644 logs/00-pull-images.log
+ create mode 100644 logs/01-volume-create.log
+ create mode 100644 logs/02-nginx-run.log
+ create mode 100644 logs/03-verify-nginx-default.log
+ create mode 100644 logs/04-create-index-html.log
+ create mode 100644 logs/05-docker-cp-index.log
+ create mode 100644 logs/06-verify-index-html.log
+ create mode 100644 logs/07-nginx-stop-rm.log
+ create mode 100644 logs/08-httpd-run.log
+ create mode 100644 logs/09-verify-httpd-default.log
+ create mode 100644 logs/10-create-about-html.log
+ create mode 100644 logs/11-docker-cp-about.log
+ create mode 100644 logs/12-verify-about-html.log
+ create mode 100644 logs/13-httpd-stop-rm.log
+ create mode 100644 logs/14-verify-volume-contents.log
+ create mode 100644 logs/15-volume-rm.log
+[exit code: 0]
+

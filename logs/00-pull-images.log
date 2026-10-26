@@ -1,0 +1,57 @@
+$ docker pull nginx:latest
+latest: Pulling from library/nginx
+8334177aa35b: Pulling fs layer
+d5f3a4724daf: Pulling fs layer
+24bf03b6a474: Pulling fs layer
+dd00b11a22aa: Pulling fs layer
+9a2c3eb3312e: Pulling fs layer
+a856bfc2a772: Pulling fs layer
+a856bfc2a772: Download complete
+8334177aa35b: Download complete
+24bf03b6a474: Download complete
+9a2c3eb3312e: Download complete
+dd00b11a22aa: Download complete
+ee284e8d8c11: Download complete
+6542b5f86ffd: Download complete
+d5f3a4724daf: Download complete
+9a2c3eb3312e: Pull complete
+d5f3a4724daf: Pull complete
+a856bfc2a772: Pull complete
+8334177aa35b: Pull complete
+24bf03b6a474: Pull complete
+dd00b11a22aa: Pull complete
+Digest: sha256:4c41e2d0a3a55b325ed572cd0200bdb72af1433c3daa2bca6ef8eea68ce504a2
+Status: Downloaded newer image for nginx:latest
+docker.io/library/nginx:latest
+[exit code: 0]
+
+$ docker pull httpd:latest
+latest: Pulling from library/httpd
+b361b1ecdecd: Pulling fs layer
+1854ebd7c33a: Pulling fs layer
+720ea190dd65: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+f8903be41a4f: Pulling fs layer
+4f4fb700ef54: Already exists
+1854ebd7c33a: Download complete
+b361b1ecdecd: Download complete
+4f4fb700ef54: Pull complete
+1854ebd7c33a: Pull complete
+8d61ccc1b972: Download complete
+720ea190dd65: Download complete
+096bb8816822: Download complete
+f8903be41a4f: Download complete
+f8903be41a4f: Pull complete
+b361b1ecdecd: Pull complete
+720ea190dd65: Pull complete
+Digest: sha256:a30cd4cd57f3f3c3be9b2d16384d2488839996bb14c67df2b51f1ecbb3e584a1
+Status: Downloaded newer image for httpd:latest
+docker.io/library/httpd:latest
+[exit code: 0]
+
+$ docker images --format 'table {{.Repository}}\t{{.Tag}}\t{{.ID}}\t{{.Size}}' | grep -E 'REPOSITORY|^nginx|^httpd'
+REPOSITORY                                                                               TAG               IMAGE ID       SIZE
+nginx                                                                                    latest            4c41e2d0a3a5   243MB
+httpd                                                                                    latest            a30cd4cd57f3   177MB
+[exit code: 0]
+

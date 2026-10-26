@@ -1,0 +1,30 @@
+$ docker run -d --name nginx-volume -p 8080:80 -v my_volume:/usr/share/nginx/html nginx:latest
+1c680e1ea633aa05b842ad16ad4ff3ba979bbf69d8cf685843bc180d84a059c8
+[exit code: 0]
+
+$ docker ps --filter name=nginx-volume
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                                     NAMES
+1c680e1ea633   nginx:latest   "/docker-entrypoint.…"   2 seconds ago   Up 2 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   nginx-volume
+[exit code: 0]
+
+$ docker inspect --format '{{json .Mounts}}' nginx-volume | python3 -m json.tool
+[
+    {
+        "Type": "volume",
+        "Name": "my_volume",
+        "Source": "/var/lib/docker/volumes/my_volume/_data",
+        "Destination": "/usr/share/nginx/html",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": true,
+        "Propagation": ""
+    }
+]
+[exit code: 0]
+
+$ docker exec nginx-volume ls -l /usr/share/nginx/html
+total 8
+-rw-r--r-- 1 root root 497 Oct 21 14:24 50x.html
+-rw-r--r-- 1 root root 896 Oct 21 14:24 index.html
+[exit code: 0]
+

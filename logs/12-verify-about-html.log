@@ -1,0 +1,30 @@
+$ curl -s -i http://localhost:8081/about.html
+HTTP/1.1 200 OK
+Date: Mon, 26 Oct 2026 22:25:39 GMT
+Server: Apache/2.4.69 (Unix)
+Last-Modified: Mon, 26 Oct 2026 22:24:46 GMT
+ETag: "183-65ec5cc18a780"
+Accept-Ranges: bytes
+Content-Length: 387
+Content-Type: text/html
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>my_volume – about.html</title>
+  </head>
+  <body>
+    <h1>About this page</h1>
+    <p>This about.html was created on the host and copied into the Docker volume "my_volume" with docker cp.</p>
+    <p>It is served by the httpd (Apache) container on http://localhost:8081/about.html.</p>
+  </body>
+</html>
+[exit code: 0]
+
+$ docker logs httpd-volume 2>&1 | tail -3
+[Mon Oct 26 22:25:28.846517 2026] [core:notice] [pid 1:tid 1] AH00094: Command line: 'httpd -D FOREGROUND'
+172.29.0.1 - - [26/Oct/2026:22:25:31 +0000] "GET / HTTP/1.1" 200 373
+172.29.0.1 - - [26/Oct/2026:22:25:39 +0000] "GET /about.html HTTP/1.1" 200 387
+[exit code: 0]
+

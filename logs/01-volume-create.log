@@ -1,0 +1,23 @@
+$ docker volume create my_volume
+my_volume
+[exit code: 0]
+
+$ docker volume ls --filter name=my_volume
+DRIVER    VOLUME NAME
+local     my_volume
+[exit code: 0]
+
+$ docker volume inspect my_volume
+[
+    {
+        "CreatedAt": "2026-10-26T22:25:12Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/my_volume/_data",
+        "Name": "my_volume",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+[exit code: 0]
+
